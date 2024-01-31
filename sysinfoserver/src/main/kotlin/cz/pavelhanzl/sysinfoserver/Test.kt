@@ -15,6 +15,6 @@ class Test(@Autowired private val userRepository: UserRepository) {
         userRepository.save(testUser)
 
 
-        println("Píšu do konzole.")
+        println("Píšu do konzole!")
     }
     }
