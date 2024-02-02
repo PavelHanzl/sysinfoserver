@@ -1,5 +1,5 @@
 package cz.pavelhanzl.sysinfoserver.sysinfo
 
-import org.springframework.data.repository.CrudRepository
+import org.springframework.data.jpa.repository.JpaRepository
 
-interface SysinfoRepository:CrudRepository<Sysinfo,Int>
+interface SysinfoRepository:JpaRepository<Sysinfo,Int>
