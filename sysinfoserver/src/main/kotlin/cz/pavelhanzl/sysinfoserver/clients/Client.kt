@@ -1,12 +1,12 @@
-package cz.pavelhanzl.sysinfoserver.users
+package cz.pavelhanzl.sysinfoserver.clients
 
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "users")
-data class User (
+@Table(name = "clients")
+data class Client (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int,
-    var name: String
+    var clientName: String
 )

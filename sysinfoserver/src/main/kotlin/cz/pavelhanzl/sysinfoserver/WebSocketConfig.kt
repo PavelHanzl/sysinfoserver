@@ -6,9 +6,10 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 @Configuration
 @EnableWebSocket
-class WebSocketConfig : WebSocketConfigurer {
+class WebSocketConfig(val webSocketHandler: WebSocketHandler) : WebSocketConfigurer {
     override fun registerWebSocketHandlers(registry: WebSocketHandlerRegistry) {
-        registry.addHandler(MyWebSocketHandler(), "/websocket-endpoint")
+
+        registry.addHandler(webSocketHandler, "/websocket-endpoint")
         println("Websockety zaregistrovany")
     }
 }

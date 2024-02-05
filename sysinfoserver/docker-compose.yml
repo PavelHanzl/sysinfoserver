@@ -32,6 +32,9 @@ services:
       - "8081:8081"
     environment:
       SRV_PORT: 8081
+    depends_on:
+      - server
+
 
   client2:
     container_name: sysinfo-client2
@@ -41,6 +44,7 @@ services:
     environment:
       SRV_PORT: 8082
     depends_on:
+      - server
       - client1
 
   db:

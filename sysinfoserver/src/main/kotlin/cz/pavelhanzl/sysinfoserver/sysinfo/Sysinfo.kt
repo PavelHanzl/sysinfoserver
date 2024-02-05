@@ -1,6 +1,6 @@
 package cz.pavelhanzl.sysinfoserver.sysinfo
 
-import cz.pavelhanzl.sysinfoserver.users.User
+import cz.pavelhanzl.sysinfoserver.clients.Client
 import jakarta.persistence.*
 
 @Entity
@@ -8,9 +8,10 @@ import jakarta.persistence.*
 data class Sysinfo (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int,
+    var id: Int? = null,
     @ManyToOne
-    var user: User,
-    var diskUsage:Double,
-    var memoryUsage:Double
+    var clientName: Client,
+    var usedMemory:Double,
+    var freeMemory:Double,
+    var totalMemory:Double
 )
