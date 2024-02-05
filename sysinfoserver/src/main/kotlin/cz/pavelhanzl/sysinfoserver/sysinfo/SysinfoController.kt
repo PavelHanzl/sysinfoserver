@@ -2,9 +2,12 @@ package cz.pavelhanzl.sysinfoserver.sysinfo
 
 import cz.pavelhanzl.sysinfoserver.clients.ClientRepository
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
+@CrossOrigin(origins = ["http://localhost:3000"])
 @RestController
 class SysinfoController(val clientRepository: ClientRepository,
                         val sysinfoRepository: SysinfoRepository) {
@@ -29,4 +32,7 @@ class SysinfoController(val clientRepository: ClientRepository,
 
         return ResponseEntity.ok(sysinfo)
     }
+
+    @GetMapping("/api/data")
+    fun getAllSysinfos(): List <Sysinfo> = sysinfoRepository.findAll().toList()
 }
