@@ -30,9 +30,6 @@ class WebSocketHandler(
 
         val clientsSysinfoDto = gson.fromJson(json, SysinfoDto::class.java)
 
-        println(clientDataObject.clientName) // Výpis pro ověření
-        println(clientsSysinfoDto.freeMemory) // Výpis pro ověření
-
         clientController.createClient(clientDataObject) // Uložení dat do databáze
         sysinfoController.addSysinfo(clientsSysinfoDto)
 
