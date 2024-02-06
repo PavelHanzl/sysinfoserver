@@ -17,7 +17,7 @@ class WebSocketHandler(
 
 
     override fun handleTextMessage(session: WebSocketSession, message: TextMessage) {
-        println("Příchozí zpráva na server: " + message.payload)
+        println("Incoming message to the server: " + message.payload)
         val payload = message.payload
         convertJsonToDataObjects(payload)
     }
