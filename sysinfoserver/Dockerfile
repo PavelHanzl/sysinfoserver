@@ -1,7 +1,7 @@
 FROM amazoncorretto:17-alpine-jdk
 
 # create a directory for the app
-WORKDIR /sysinfoclient
+WORKDIR /sysinfoserver
 
 #Copy everything from the current directory to the app directory
 COPY . .
