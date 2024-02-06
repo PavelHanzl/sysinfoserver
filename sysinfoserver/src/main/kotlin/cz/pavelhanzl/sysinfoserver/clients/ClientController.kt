@@ -20,10 +20,9 @@ class ClientController(private val clientRepository: ClientRepository) {
     fun createClient(@RequestBody client: Client): ResponseEntity<Any> {
 
        if (clientRepository.findByClientName(client.clientName) == null){
-           // Klient neexistuje, uložte nového klienta
+           // Klient neexistuje, ulož nového klienta
            val savedClient = clientRepository.save(client)
            return ResponseEntity(savedClient, HttpStatus.CREATED)
-
        }else{
            return ResponseEntity.status(HttpStatus.CONFLICT).body("Klient s identifikátorem ${client.clientName} již existuje.")
        }
@@ -31,9 +30,4 @@ class ClientController(private val clientRepository: ClientRepository) {
 
 
     }
-
-
-    //get user by id
-
-
 }

@@ -8,6 +8,4 @@ class SysinfoserverApplication
 
 fun main(args: Array<String>) {
 	runApplication<SysinfoserverApplication>(*args)
-
-
 }

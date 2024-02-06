@@ -15,19 +15,20 @@ class SysinfoController(val clientRepository: ClientRepository,
 
     fun addSysinfo(@RequestBody sysinfoDto: SysinfoDto): ResponseEntity<Sysinfo> {
 
-        // Převod DTO na entitu
+        //Transfer DTO to entity
         val client = clientRepository.findByClientName(sysinfoDto.clientName)
             ?: throw Exception("Klient nenalezen")
 
-        //sestavení sysinfo
+        //sysinfo build
         val sysinfo = Sysinfo(
             clientName = client,
             usedMemory = sysinfoDto.usedMemory,
             freeMemory = sysinfoDto.freeMemory,
-            totalMemory = sysinfoDto.totalMemory
+            totalMemory = sysinfoDto.totalMemory,
+            createdAt = null
         )
 
-        //uložení
+        //save
         sysinfoRepository.save(sysinfo)
 
         return ResponseEntity.ok(sysinfo)

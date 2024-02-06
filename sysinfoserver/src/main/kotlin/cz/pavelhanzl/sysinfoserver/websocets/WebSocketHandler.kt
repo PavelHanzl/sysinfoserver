@@ -1,4 +1,4 @@
-package cz.pavelhanzl.sysinfoserver
+package cz.pavelhanzl.sysinfoserver.websocets
 import com.google.gson.Gson
 import cz.pavelhanzl.sysinfoserver.clients.Client
 import cz.pavelhanzl.sysinfoserver.clients.ClientController
@@ -17,20 +17,23 @@ class WebSocketHandler(
 
 
     override fun handleTextMessage(session: WebSocketSession, message: TextMessage) {
-        println(message.payload)
+        println("Příchozí zpráva na server: " + message.payload)
         val payload = message.payload
-        convertJsonToDataObjects(payload) // Převod JSONu na objekt
-
+        convertJsonToDataObjects(payload)
     }
 
-    // Metoda pro převod JSONu na objekt
+    // Method for converting JSON to object
     private fun convertJsonToDataObjects(json: String) {
+
+        //Client object deserialization
         val gson = Gson()
         val clientDataObject = gson.fromJson(json, Client::class.java)
 
+        //Sysinfo object deserialization to DTO
         val clientsSysinfoDto = gson.fromJson(json, SysinfoDto::class.java)
 
-        clientController.createClient(clientDataObject) // Uložení dat do databáze
+        //Saves the created objects
+        clientController.createClient(clientDataObject)
         sysinfoController.addSysinfo(clientsSysinfoDto)
 
     }
